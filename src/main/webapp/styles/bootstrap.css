@@ -12,6 +12,10 @@
   justify-content: center;
 }
 
+#botonRegistro {
+	padding: 15px 32px;
+}
+
 #tablaLogin{
 	background: #0d6efd;
 	padding: 100px;
