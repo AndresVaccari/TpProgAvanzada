@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="styles/bootstrap.css" />
 </head>
 <body>
-	<h1>Prueba</h1>
+	<%
+		String mensaje = (String)request.getAttribute("mensaje");
+	%>
+	<h1>Bienvenido <%=mensaje%></h1>
 </body>
 </html>
