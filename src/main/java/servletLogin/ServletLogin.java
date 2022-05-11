@@ -45,15 +45,14 @@ public class ServletLogin extends HttpServlet {
 			
 			ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "'");
 			
-			
 			//System.out.println(rs.getInt(1));
 			
 			rs.next();
 			
-			System.out.println(rs.getInt(1));
-			
 			if (rs.getInt(1) == 1) {
 				response.sendRedirect("inicio.jsp");
+			} else {
+				response.sendRedirect("index.jsp");
 			}
 			
 		} catch (Exception e) {
