@@ -10,11 +10,11 @@
 </head>
 <body>
 	<div class="verticalContainer">
-		<form action="" id="tablaLogin">
+		<form action="ServletLogin" method="get" id="tablaLogin">
 			<table>
 				<tr><th>Usuario</th><th><input type="text" name="user"></input></th></tr>
 				<tr><th>Contraseña</th><th><input type="password" name="pass"></input></th></tr>
-				<tr><th><button type="submit">Login</button></th><th><button type="submit">Registro</button>
+				<tr><th><button type="submit" name="bl" value="Login">Login</button></th><th><button type="submit" name="br" value="Registro">Registro</button>
 			</table>	
 		</form>
 	</div>
