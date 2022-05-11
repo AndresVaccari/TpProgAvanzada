@@ -29,6 +29,11 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String br = request.getParameter("br");
+		if (br != null) {
+			response.sendRedirect("registro.jsp");
+		}
+		
 		try {
 			String user = request.getParameter("user");
 			String pass = request.getParameter("pass");
@@ -38,21 +43,23 @@ public class ServletLogin extends HttpServlet {
 			
 			Statement st = conn.createStatement();
 			
-			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "'");
+			ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "'");
 			
-			System.out.println(rs.getString(1));
 			
-			if (rs != null) {
+			//System.out.println(rs.getInt(1));
+			
+			rs.next();
+			
+			System.out.println(rs.getInt(1));
+			
+			if (rs.getInt(1) == 1) {
 				response.sendRedirect("inicio.jsp");
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		String br = request.getParameter("br");
-		if (br != null) {
-			response.sendRedirect("registro.jsp");
-		}
 		
 		
 	}
