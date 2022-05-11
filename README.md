@@ -18,6 +18,6 @@ El usuario al registrarse queda en estado PENDIENTE. No pudiendo ingresar hasta 
 
 Los usuarios no pueden darse de baja, pero pueden enviar y recibir mensajes a todos los usuarios que estén activos. A sus mensajes pueden verlos o eliminarlos (los mensajes poseen estado, RECIBIDOS, ENVIADOS, los cuales pueden estar LEÍDOS O NO LEÍDOS)
 ##
-Martin Javier Vidal
+Martín Javier Vidal
 
 Andrés Juan Vaccari
