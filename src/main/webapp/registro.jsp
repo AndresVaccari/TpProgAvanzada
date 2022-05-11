@@ -10,15 +10,15 @@
 </head>
 <body>
 	<div class="verticalContainer">
-		<form action="" id="tablaLogin">
+		<form action="ServletRegistro" method="get" id="tablaLogin">
 			<table>
 				<tr><th>Usuario</th><th><input type="text" name="user"></input></th></tr>
 				<tr><th>Contraseña</th><th><input type="password" name="pass"></input></th></tr>
-				<tr><th>Documento</th><th><input type="text" name="pass"></input></th></tr>
-				<tr><th>Nombre</th><th><input type="text" name="pass"></input></th></tr>
-				<tr><th>Apellido</th><th><input type="text" name="pass"></input></th></tr>
-				<tr><th>Email</th><th><input type="text" name="pass"></input></th></tr>
-				<tr><th><button type="submit">Login</button></th><th><button type="submit">Registro</button>
+				<tr><th>Documento</th><th><input type="text" name="doc"></input></th></tr>
+				<tr><th>Nombre</th><th><input type="text" name="name"></input></th></tr>
+				<tr><th>Apellido</th><th><input type="text" name="lname"></input></th></tr>
+				<tr><th>Email</th><th><input type="text" name="email"></input></th></tr>
+				<tr><td colspan="2" align="center"><button type="submit" id="botonRegistro">Registrarse!</button></td></tr>
 			</table>	
 		</form>
 	</div>

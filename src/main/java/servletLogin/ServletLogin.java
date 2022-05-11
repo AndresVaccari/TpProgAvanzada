@@ -41,11 +41,13 @@ public class ServletLogin extends HttpServlet {
 			
 			Statement st = conn.createStatement();
 			
-			ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "'");
-			rs.next();
+			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "'");
 			
-			if (rs.getInt(1) == 1) {
-				response.sendRedirect("inicio.jsp");
+			if (rs.next()) {
+				String nombre = rs.getString(2);
+				String apellido = rs.getString(3);
+				request.setAttribute("mensaje", nombre + " " + apellido);
+				request.getRequestDispatcher("inicio.jsp").forward(request, response);
 			} else {
 				PrintWriter out = response.getWriter();  
 				out.println("<script type=\"text/javascript\">");
