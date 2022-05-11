@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>TP FINASSL</h1>
+	<form action="">
+		<table>
+			<tr><th>Usuario</th><th><input type="text" name="user"></input></th></tr>
+			<tr><th>Contraseña</th><th><input type="password" name="pass"></input></th></tr>
+			<tr><th><button type="submit">Login</button></th><th><button type="submit">Registro</button>
+		</table>	
+	</form>
 </body>
 </html>
