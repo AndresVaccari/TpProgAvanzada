@@ -1,4 +1,4 @@
-package servletLogin;
+package servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

@@ -4,7 +4,7 @@
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>loginServlet.LoginServlet</servlet-class>
+    <servlet-class>servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>ServletLogin</display-name>
     <servlet-name>ServletLogin</servlet-name>
-    <servlet-class>servletLogin.ServletLogin</servlet-class>
+    <servlet-class>servlet.ServletLogin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletLogin</servlet-name>
@@ -33,7 +33,7 @@
     <description></description>
     <display-name>ServletRegistro</display-name>
     <servlet-name>ServletRegistro</servlet-name>
-    <servlet-class>servletLogin.ServletRegistro</servlet-class>
+    <servlet-class>servlet.ServletRegistro</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletRegistro</servlet-name>
