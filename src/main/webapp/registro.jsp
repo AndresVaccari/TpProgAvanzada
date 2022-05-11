@@ -14,6 +14,10 @@
 			<table>
 				<tr><th>Usuario</th><th><input type="text" name="user"></input></th></tr>
 				<tr><th>Contraseña</th><th><input type="password" name="pass"></input></th></tr>
+				<tr><th>Documento</th><th><input type="text" name="pass"></input></th></tr>
+				<tr><th>Nombre</th><th><input type="text" name="pass"></input></th></tr>
+				<tr><th>Apellido</th><th><input type="text" name="pass"></input></th></tr>
+				<tr><th>Email</th><th><input type="text" name="pass"></input></th></tr>
 				<tr><th><button type="submit">Login</button></th><th><button type="submit">Registro</button>
 			</table>	
 		</form>

@@ -13,7 +13,7 @@ public class login {
 			
 			Statement st = conn.createStatement();
 			
-			ResultSet rs = st.executeQuery("SELECT nombre FROM usuario WHERE usuario = " nombre " AND password = " pass);
+			ResultSet rs = st.executeQuery("SELECT nombre FROM usuario WHERE usuario = admin AND password = admin");
 			
 			while(rs.next()) {
 				System.out.println(rs.getString(1));
