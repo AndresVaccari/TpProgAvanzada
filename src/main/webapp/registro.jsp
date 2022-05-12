@@ -10,11 +10,28 @@
 </head>
 <body>
 	<form action="ServletRegistro" method="get">
+		<header>
+			<nav>
+				<ul class="nav-left-section">
+					<li>
+	                    <a href="index.jsp">Titulo de la pag</a>
+	                </li>
+				</ul>
+	            <ul class="nav-right-section">
+	                <li>
+	                    <a href="login.jsp">Iniciar Sesion</a>
+	                </li>
+	                <li>
+	                    <a href="registro.jsp"">Registrarse</a>
+	                </li>
+	            </ul>
+	        </nav>
+		</header>
 		<main class="verticalContainer">
 			<div class="tablaLogin">
 				<table>
 					<tr><th>Usuario</th><th><input type="text" name="user"></input></th></tr>
-					<tr><th>Contraseï¿½a</th><th><input type="password" name="pass"></input></th></tr>
+					<tr><th>Contraseña</th><th><input type="password" name="pass"></input></th></tr>
 					<tr><th>Documento</th><th><input type="text" name="doc"></input></th></tr>
 					<tr><th>Nombre</th><th><input type="text" name="name"></input></th></tr>
 					<tr><th>Apellido</th><th><input type="text" name="lname"></input></th></tr>

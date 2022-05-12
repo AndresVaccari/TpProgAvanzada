@@ -39,4 +39,14 @@
     <servlet-name>ServletRegistro</servlet-name>
     <url-pattern>/ServletRegistro</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletIndex</display-name>
+    <servlet-name>ServletIndex</servlet-name>
+    <servlet-class>servlet.ServletIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletIndex</servlet-name>
+    <url-pattern>/ServletIndex</url-pattern>
+  </servlet-mapping>
 </web-app>

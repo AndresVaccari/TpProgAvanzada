@@ -9,18 +9,24 @@
 
 </head>
 <body>
-	<form action="">
-		<head>
-			<ul>
-	
-			</ul>
-			<ul>
-				<button type="submit">Iniciar Secion</button>
-			</ul>
-			<ul>
-				<button type="submit">Registrarse</button>
-			</ul>
-		</head>
+	<form action="ServletIndex" method="get">
+		<header>
+			<nav>
+				<ul class="nav-left-section">
+					<li>
+	                    <a href="index.jsp">Titulo de la pag</a>
+	                </li>
+				</ul>
+	            <ul class="nav-right-section">
+	                <li>
+	                    <a href="login.jsp">Iniciar Sesion</a>
+	                </li>
+	                <li>
+	                    <a href="registro.jsp"">Registrarse</a>
+	                </li>
+	            </ul>
+	        </nav>
+		</header>
 		<main>
 			
 		</main>
