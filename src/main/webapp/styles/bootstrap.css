@@ -5,20 +5,26 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- .verticalContainer{
-  height: 500px;
+form .verticalContainer{
+  height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#botonRegistro {
-	padding: 15px 32px;
+form .verticalContainer .tablaLogin {
+  background: #0d6efd;
+  padding: 75px;
+  border-radius: 20%;
 }
 
-#tablaLogin{
-	background: #0d6efd;
-	padding: 100px;
+form .verticalContainer .tablaLogin table th{
+  padding: 10px;
+}
+
+
+#botonRegistro {
+	padding: 15px 32px;
 }
  
 :root {
@@ -2494,8 +2500,8 @@ textarea.form-control-lg {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
-  color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
