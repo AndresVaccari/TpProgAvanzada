@@ -11,6 +11,31 @@
 	<%
 		String mensaje = (String)request.getAttribute("mensaje");
 	%>
-	<h1>Bienvenido <%=mensaje%></h1>
+	<form action="">
+		<header>
+			<nav>
+				<ul class="nav-left-section">
+					<li>
+	                    <a href="index.jsp">Titulo de la pag</a>
+	                </li>
+				</ul>
+	            <ul class="nav-right-section">
+	                <li>
+	                    Bienvenido <%=mensaje%>
+	                </li>
+	            </ul>
+	        </nav>
+		</header>
+		<main>
+			<nav>
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</nav>
+		</main>
+	</form>
 </body>
 </html>

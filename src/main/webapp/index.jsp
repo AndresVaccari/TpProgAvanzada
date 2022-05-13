@@ -22,7 +22,7 @@
 	                    <a href="login.jsp">Iniciar Sesion</a>
 	                </li>
 	                <li>
-	                    <a href="registro.jsp"">Registrarse</a>
+	                    <a href="registro.jsp">Registrarse</a>
 	                </li>
 	            </ul>
 	        </nav>
