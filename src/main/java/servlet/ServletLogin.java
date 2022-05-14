@@ -44,10 +44,19 @@ public class ServletLogin extends HttpServlet {
 			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "'");
 			
 			if (rs.next()) {
-				String nombre = rs.getString(2);
-				String apellido = rs.getString(3);
-				request.setAttribute("mensaje", nombre + " " + apellido);
-				request.getRequestDispatcher("inicio.jsp").forward(request, response);
+				if(rs.getInt(7) == 1) {
+					String nombre = rs.getString(2);
+					String apellido = rs.getString(3);
+					request.setAttribute("mensaje", nombre + " " + apellido);
+					request.getRequestDispatcher("inicio.jsp").forward(request, response);
+				}
+				else {
+					PrintWriter out = response.getWriter();  
+					out.println("<script type=\"text/javascript\">");
+					out.println("location='index.jsp';");
+					out.println("alert('Usuario inactivo');");
+					out.println("</script>");
+				}
 			} else {
 				PrintWriter out = response.getWriter();  
 				out.println("<script type=\"text/javascript\">");
