@@ -49,4 +49,14 @@
     <servlet-name>ServletIndex</servlet-name>
     <url-pattern>/ServletIndex</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAdminPanel</display-name>
+    <servlet-name>ServletAdminPanel</servlet-name>
+    <servlet-class>servlet.ServletAdminPanel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAdminPanel</servlet-name>
+    <url-pattern>/ServletAdminPanel</url-pattern>
+  </servlet-mapping>
 </web-app>

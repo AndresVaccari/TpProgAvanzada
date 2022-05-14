@@ -46,6 +46,13 @@ public class ServletLogin extends HttpServlet {
 			if (rs.next()) {
 				String nombre = rs.getString(2);
 				String apellido = rs.getString(3);
+				String menu;
+				if (rs.getString(1).equals("admin")) {
+					menu = "<li><button>Enviar mensaje</button></li><li><button>Bandeja de Entrada</button></li><li><button>Administrar usuario</button></li>";
+				} else {
+					menu = "<li><button>Enviar mensaje</button></li><li><button>Bandeja de Entrada</button></li>";
+				}
+				request.setAttribute("menu", menu);
 				request.setAttribute("mensaje", nombre + " " + apellido);
 				request.getRequestDispatcher("inicio.jsp").forward(request, response);
 			} else {

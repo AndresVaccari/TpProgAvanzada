@@ -10,6 +10,7 @@
 <body>
 	<%
 		String mensaje = (String)request.getAttribute("mensaje");
+		String menu = (String)request.getAttribute("menu");
 	%>
 	<form action="">
 		<header>
@@ -29,10 +30,7 @@
 		<main>
 			<nav>
 				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					<%=menu%>
 				</ul>
 			</nav>
 		</main>
