@@ -59,4 +59,14 @@
     <servlet-name>ServletAdminPanel</servlet-name>
     <url-pattern>/ServletAdminPanel</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletNavbar</display-name>
+    <servlet-name>ServletNavbar</servlet-name>
+    <servlet-class>servlet.ServletNavbar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletNavbar</servlet-name>
+    <url-pattern>/ServletNavbar</url-pattern>
+  </servlet-mapping>
 </web-app>

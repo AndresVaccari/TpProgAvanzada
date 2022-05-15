@@ -13,13 +13,13 @@
 		<nav class="navbar bg-light">
 			<div class="container-fluid">
 				<a href="#" class="navbar-brand">Logo</a>
-				<form class="d-flex">
+				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
 						<li class="nav-item">
-							<a href="#" class="nav-link">Iniciar Sesion</a>
+							<button type="submit" name="bl" value="Login" class="btn btn-secondary m-2">Iniciar Sesion</button>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link">Registrarse</a>
+							<button type="submit" name="br" value="Login" class="btn btn-secondary m-2">Registrarse</button>
 						</li>
 					</ul>
 				</form>

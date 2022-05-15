@@ -9,24 +9,24 @@
 
 </head>
 <body>
+	<header>
+		<nav class="navbar bg-light">
+			<div class="container-fluid">
+				<a href="#" class="navbar-brand">Logo</a>
+				<form class="d-flex" action="ServletNavbar" method="get">
+					<ul class="nav">
+						<li class="nav-item">
+							<button type="submit" name="bl" value="Login" class="btn btn-secondary m-2">Iniciar Sesion</button>
+						</li>
+						<li class="nav-item">
+							<button type="submit" name="br" value="Login" class="btn btn-secondary m-2">Registrarse</button>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</nav>
+	</header>	
 	<form action="ServletRegistro" method="get">
-		<header>
-			<nav>
-				<ul class="nav-left-section">
-					<li>
-	                    <a href="index.jsp">Titulo de la pag</a>
-	                </li>
-				</ul>
-	            <ul class="nav-right-section">
-	                <li>
-	                    <a href="login.jsp">Iniciar Sesion</a>
-	                </li>
-	                <li>
-	                    <a href="registro.jsp"">Registrarse</a>
-	                </li>
-	            </ul>
-	        </nav>
-		</header>
 		<main class="verticalContainer">
 			<div class="tablaLogin">
 				<table>
