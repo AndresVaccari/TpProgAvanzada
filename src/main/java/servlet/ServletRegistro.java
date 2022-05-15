@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import entities.EstadoUsuario;
+
 /**
  * Servlet implementation class ServletRegistro
  */
@@ -58,7 +60,7 @@ public class ServletRegistro extends HttpServlet {
 				out.println("alert('Usuario ya existente');");
 				out.println("</script>");	
 			} else {
-				st.executeUpdate("INSERT INTO `usuario`(`Usuario`, `Nombre`, `Apellido`, `Documento`, `Email`, `Password`, `Estado`) VALUES ('" + user + "','" + name + "','" + lname + "','" + doc + "','" + email +"','" + pass +"','" + 0 + "')");
+				st.executeUpdate("INSERT INTO `usuario`(`Usuario`, `Nombre`, `Apellido`, `Documento`, `Email`, `Password`, `Estado`) VALUES ('" + user + "','" + name + "','" + lname + "','" + doc + "','" + email +"','" + pass +"','" + EstadoUsuario.Pendiente.ordinal() + "')");
 				PrintWriter out = response.getWriter();  
 				out.println("<script type=\"text/javascript\">");
 				out.println("location='index.jsp';");

@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import entities.EstadoUsuario;
+
 /**
  * Servlet implementation class ServletLogin
  */
@@ -44,7 +46,7 @@ public class ServletLogin extends HttpServlet {
 			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "'");
 			
 			if (rs.next()) {
-				if(rs.getInt(7) == 1) {
+				if(rs.getInt(7) == EstadoUsuario.Activo.ordinal()) {
 					String nombre = rs.getString(2);
 					String apellido = rs.getString(3);
 					String menu;
@@ -61,14 +63,14 @@ public class ServletLogin extends HttpServlet {
 					PrintWriter out = response.getWriter();  
 					out.println("<script type=\"text/javascript\">");
 					out.println("location='index.jsp';");
-					out.println("alert('Usuario inactivo');");
+					out.println("alert('Usuario inactivo o pendiente de aprobación');");
 					out.println("</script>");
 				}
 			} else {
 				PrintWriter out = response.getWriter();  
 				out.println("<script type=\"text/javascript\">");
 				out.println("location='index.jsp';");
-				out.println("alert('Usuario o contrasenia incorrecta');");
+				out.println("alert('Usuario o contraseña incorrecta');");
 				out.println("</script>");		
 			}
 			
