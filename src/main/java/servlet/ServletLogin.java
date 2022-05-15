@@ -63,14 +63,14 @@ public class ServletLogin extends HttpServlet {
 					PrintWriter out = response.getWriter();  
 					out.println("<script type=\"text/javascript\">");
 					out.println("location='index.jsp';");
-					out.println("alert('Usuario inactivo o pendiente de aprobación');");
+					out.println("alert('Usuario inactivo o pendiente de aprobacion');");
 					out.println("</script>");
 				}
 			} else {
 				PrintWriter out = response.getWriter();  
 				out.println("<script type=\"text/javascript\">");
 				out.println("location='index.jsp';");
-				out.println("alert('Usuario o contraseña incorrecta');");
+				out.println("alert('Usuario o contrasenia incorrecta');");
 				out.println("</script>");		
 			}
 			

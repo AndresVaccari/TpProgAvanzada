@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import entities.EstadoUsuario;
+import entities.Usuario;
 
 /**
  * Servlet implementation class ServletRegistro
@@ -29,15 +30,18 @@ public class ServletRegistro extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user = request.getParameter("user");
-		String pass = request.getParameter("pass");
-		String doc = request.getParameter("doc");
-		String name = request.getParameter("name");
-		String lname = request.getParameter("lname");
-		String email = request.getParameter("email");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		Usuario usuario = new Usuario();
+		usuario.setUsuario(request.getParameter("user"));
+		usuario.setClave(request.getParameter("pass"));
+		usuario.setDocumento(request.getParameter("doc"));
+		usuario.setNombre(request.getParameter("name"));
+		usuario.setApellido(request.getParameter("lname"));
+		usuario.setEmail(request.getParameter("email"));
+		usuario.setEstadoUsuario(EstadoUsuario.Pendiente);
 		
-		if (user.equals("") || pass.equals("") || doc.equals("") || name.equals("") || lname.equals("") || email.equals("")) {
+		if (usuario.getUsuario().equals("") || usuario.getClave().equals("") || usuario.getDocumento().equals("") || usuario.getNombre().equals("") || usuario.getApellido().equals("") || usuario.getEmail().equals("")) {
 			PrintWriter out = response.getWriter();  
 			out.println("<script type=\"text/javascript\">");
 			out.println("location='registro.jsp';");
@@ -51,7 +55,7 @@ public class ServletRegistro extends HttpServlet {
 			
 			Statement st = conn.createStatement();
 			
-			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE usuario = '" + user + "'");
+			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE usuario = '" + usuario.getUsuario() + "'");
 			
 			if (rs.next()) {
 				PrintWriter out = response.getWriter();  
@@ -60,7 +64,10 @@ public class ServletRegistro extends HttpServlet {
 				out.println("alert('Usuario ya existente');");
 				out.println("</script>");	
 			} else {
-				st.executeUpdate("INSERT INTO `usuario`(`Usuario`, `Nombre`, `Apellido`, `Documento`, `Email`, `Password`, `Estado`) VALUES ('" + user + "','" + name + "','" + lname + "','" + doc + "','" + email +"','" + pass +"','" + EstadoUsuario.Pendiente.ordinal() + "')");
+				st.executeUpdate("INSERT INTO `usuario`"
+						+ "(`Usuario`, `Nombre`, `Apellido`, `Documento`, `Email`, `Password`, `Estado`) "
+						+ "VALUES "
+						+ "('" + usuario.getUsuario() + "','" + usuario.getNombre() + "','" + usuario.getApellido() + "','" + usuario.getDocumento() + "','" + usuario.getEmail() +"','" + usuario.getClave() +"','" + usuario.getEstadoUsuario().ordinal() + "')");
 				PrintWriter out = response.getWriter();  
 				out.println("<script type=\"text/javascript\">");
 				out.println("location='index.jsp';");
