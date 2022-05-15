@@ -51,9 +51,12 @@ public class ServletLogin extends HttpServlet {
 					String apellido = rs.getString(3);
 					String menu;
 					if (rs.getString(1).equals("admin")) {
-						menu = "<li><button>Enviar mensaje</button></li><li><button>Bandeja de Entrada</button></li><li><button>Administrar usuario</button></li>";
+						menu = "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
+								+ "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>"
+								+ "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Modificar Usuarios</button>";
 					} else {
-						menu = "<li><button>Enviar mensaje</button></li><li><button>Bandeja de Entrada</button></li>";
+						menu = "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
+								+ "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>";
 					}
 					request.setAttribute("menu", menu);
 					request.setAttribute("mensaje", nombre + " " + apellido);
@@ -62,14 +65,14 @@ public class ServletLogin extends HttpServlet {
 				else {
 					PrintWriter out = response.getWriter();  
 					out.println("<script type=\"text/javascript\">");
-					out.println("location='index.jsp';");
+					out.println("location='login.jsp';");
 					out.println("alert('Usuario inactivo o pendiente de aprobacion');");
 					out.println("</script>");
 				}
 			} else {
 				PrintWriter out = response.getWriter();  
 				out.println("<script type=\"text/javascript\">");
-				out.println("location='index.jsp';");
+				out.println("location='login.jsp';");
 				out.println("alert('Usuario o contrasenia incorrecta');");
 				out.println("</script>");		
 			}

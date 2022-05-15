@@ -69,4 +69,14 @@
     <servlet-name>ServletNavbar</servlet-name>
     <url-pattern>/ServletNavbar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletLogo</display-name>
+    <servlet-name>ServletLogo</servlet-name>
+    <servlet-class>servlet.ServletLogo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLogo</servlet-name>
+    <url-pattern>/ServletLogo</url-pattern>
+  </servlet-mapping>
 </web-app>

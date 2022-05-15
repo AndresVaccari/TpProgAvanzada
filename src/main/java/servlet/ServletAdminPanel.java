@@ -38,6 +38,9 @@ public class ServletAdminPanel extends HttpServlet {
 			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE 'Estado' = 0" );
 			
 			while (rs.next()) {
+				if (rs.getInt(7) != 0) {
+					continue;
+				}
 				String user = rs.getString(1);
 				listado += "<li>" + user + " <input type=\"checkbox\"> </li>";
 			}

@@ -1,7 +1,6 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,6 +31,10 @@ public class ServletNavbar extends HttpServlet {
 		String bl = request.getParameter("bl");
 		if (bl != null) {
 			response.sendRedirect("login.jsp");
+		}
+		String bs = request.getParameter("bs");
+		if (bs != null) {
+			response.sendRedirect("index.jsp");
 		}
 	}
 

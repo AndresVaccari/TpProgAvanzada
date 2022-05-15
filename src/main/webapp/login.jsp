@@ -12,14 +12,16 @@
 	<header>
 		<nav class="navbar bg-light">
 			<div class="container-fluid">
-				<a href="#" class="navbar-brand">Logo</a>
+				<form class="d-flex" action="ServletNavbar" method="get">
+					<button type="submit" name="bs" class="btn btn-link navbar-brand m-2">Logo</button>
+				</form>
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
 						<li class="nav-item">
-							<button type="submit" name="bl" value="Login" class="btn btn-secondary m-2">Iniciar Sesion</button>
+							<button type="submit" name="bl" class="btn btn-secondary m-2">Iniciar Sesion</button>
 						</li>
 						<li class="nav-item">
-							<button type="submit" name="br" value="Login" class="btn btn-secondary m-2">Registrarse</button>
+							<button type="submit" name="br" class="btn btn-secondary m-2">Registrarse</button>
 						</li>
 					</ul>
 				</form>
@@ -28,8 +30,8 @@
 	</header>	
 	<main>
 		<form action="ServletLogin" method="get">
-			<div class="d-flex justify-content-center align-items-center" style="height: 500px;">
-				<div class="d-flex flex-column p-4 bg-light border border-dark rounded-4">
+			<div class="d-flex justify-content-center align-items-center m-5">
+				<div class="d-flex flex-column p-5 bg-light border rounded-4">
 					<div class="mx-auto mb-4" style="width: 500px;">
 					    <input type="text" class="form-control" name="user"/>
 					    <label class="form-label">Usuario</label>
