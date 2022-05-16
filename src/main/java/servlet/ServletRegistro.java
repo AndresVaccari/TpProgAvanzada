@@ -17,6 +17,15 @@ import entities.Usuario;
  * Servlet implementation class ServletRegistro
  */
 public class ServletRegistro extends HttpServlet {
+	static {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -31,7 +40,7 @@ public class ServletRegistro extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	{		
 		Usuario usuario = new Usuario();
 		usuario.setUsuario(request.getParameter("user"));
 		usuario.setClave(request.getParameter("pass"));
@@ -50,7 +59,7 @@ public class ServletRegistro extends HttpServlet {
 		}
 		
 		try {	
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			
 			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
 			
 			Statement st = conn.createStatement();
