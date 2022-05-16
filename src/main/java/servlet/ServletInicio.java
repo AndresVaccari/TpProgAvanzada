@@ -51,9 +51,7 @@ public class ServletInicio extends HttpServlet {
 						continue;
 					}
 					String user = rs.getString(1);
-					if (rs.next()) {
-						listado += "<li>" + user + " <input type=\"checkbox\"> </li>";
-					}
+					listado += "<li>" + user + " <input type=\"checkbox\"> </li>";
 				}		
 				request.setAttribute("listado", listado);
 				request.getRequestDispatcher("adminpanel.jsp").forward(request, response);		
