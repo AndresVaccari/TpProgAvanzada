@@ -79,4 +79,14 @@
     <servlet-name>ServletLogo</servlet-name>
     <url-pattern>/ServletLogo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletInicio</display-name>
+    <servlet-name>ServletInicio</servlet-name>
+    <servlet-class>servlet.ServletInicio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInicio</servlet-name>
+    <url-pattern>/ServletInicio</url-pattern>
+  </servlet-mapping>
 </web-app>

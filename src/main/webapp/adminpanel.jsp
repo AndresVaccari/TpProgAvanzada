@@ -20,7 +20,7 @@
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
 						<li class="nav-item">
-							<button type="submit" name="bl" class="btn btn-secondary m-2">Volver</button>
+							<button type="button" onclick="history.back()" name="bl" class="btn btn-secondary m-2 ">Volver</button>
 						</li>
 					</ul>
 				</form>

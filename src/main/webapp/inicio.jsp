@@ -31,7 +31,9 @@
 	<main>
 		<section class="d-flex justify-content-center align-items-center m-5">
 			<div class="d-flex m-5 p-5 bg-light border rounded-4"">
+				<form action="ServletInicio">
 				<%=menu%>
+				</form>
 			</div>
 		</section>
 	</main>

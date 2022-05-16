@@ -51,12 +51,12 @@ public class ServletLogin extends HttpServlet {
 					String apellido = rs.getString(3);
 					String menu;
 					if (rs.getString(1).equals("admin")) {
-						menu = "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
-								+ "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>"
-								+ "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Modificar Usuarios</button>";
+						menu = "<button type=\"submit\" name=\"be\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
+								+ "<button type=\"submit\" name=\"bb\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>"
+								+ "<button type=\"submit\" name=\"ba\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Modificar Usuarios</button>";
 					} else {
-						menu = "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
-								+ "<button type=\"submit\" name=\"bl\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>";
+						menu = "<button type=\"submit\" name=\"be\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
+								+ "<button type=\"submit\" name=\"bb\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>";
 					}
 					request.setAttribute("menu", menu);
 					request.setAttribute("mensaje", nombre + " " + apellido);
