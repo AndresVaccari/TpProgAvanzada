@@ -16,6 +16,15 @@ import entities.EstadoUsuario;
  * Servlet implementation class ServletLogin
  */
 public class ServletLogin extends HttpServlet {
+	static {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -35,10 +44,10 @@ public class ServletLogin extends HttpServlet {
 		}
 		
 		try {
+			
 			String user = request.getParameter("user");
 			String pass = request.getParameter("pass");
 			
-			Class.forName("com.mysql.cj.jdbc.Driver");
 			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
 			
 			Statement st = conn.createStatement();
@@ -49,16 +58,13 @@ public class ServletLogin extends HttpServlet {
 				if(rs.getInt(7) == EstadoUsuario.Activo.ordinal()) {
 					String nombre = rs.getString(2);
 					String apellido = rs.getString(3);
-					String menu;
+					String tipoUsuario;
 					if (rs.getString(1).equals("admin")) {
-						menu = "<button type=\"submit\" name=\"be\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
-								+ "<button type=\"submit\" name=\"bb\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>"
-								+ "<button type=\"submit\" name=\"ba\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Modificar Usuarios</button>";
+						tipoUsuario = "admin";
 					} else {
-						menu = "<button type=\"submit\" name=\"be\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Enviar Mensaje</button>"
-								+ "<button type=\"submit\" name=\"bb\" value=\"Login\" class=\"btn btn-primary btn-block m-1\">Bandeja de Entrada</button>";
+						tipoUsuario = "user";
 					}
-					request.setAttribute("menu", menu);
+					request.setAttribute("tipoUsuario", tipoUsuario);
 					request.setAttribute("mensaje", nombre + " " + apellido);
 					request.getRequestDispatcher("inicio.jsp").forward(request, response);
 				}

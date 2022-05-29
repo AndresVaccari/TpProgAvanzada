@@ -13,6 +13,15 @@ import java.sql.Statement;
  * Servlet implementation class ServletAdminPanel
  */
 public class ServletAdminPanel extends HttpServlet {
+	static {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -28,25 +37,9 @@ public class ServletAdminPanel extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String listado = "";
-			
-			Class.forName("com.mysql.cj.jdbc.Driver");
 			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
 			
 			Statement st = conn.createStatement();
-			
-			ResultSet rs = st.executeQuery("SELECT * FROM usuario WHERE 'Estado' = 0" );
-			
-			while (rs.next()) {
-				if (rs.getInt(7) != 0) {
-					continue;
-				}
-				String user = rs.getString(1);
-				listado += "<li>" + user + " <input type=\"checkbox\"> </li>";
-			}
-			
-			request.setAttribute("listado", listado);
-			request.getRequestDispatcher("adminpanel.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -10,7 +10,7 @@
 <body>
 	<%
 		String mensaje = (String)request.getAttribute("mensaje");
-		String menu = (String)request.getAttribute("menu");
+		String tipoUsuario = (String)request.getAttribute("tipoUsuario");
 	%>
 	<header>
 		<nav class="navbar bg-light">
@@ -32,7 +32,20 @@
 		<section class="d-flex justify-content-center align-items-center m-5">
 			<div class="d-flex m-5 p-5 bg-light border rounded-4">
 				<form action="ServletInicio">
-				<%=menu%>
+					<%
+						if (tipoUsuario.equals("admin")) {
+							%>
+								<button type="submit" name="botonMensajes" value="Login" class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
+								<button type="submit" name="botonBandeja" value="Login" class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>
+								<button type="submit" name="botonAdmin" value="Login" class="btn btn-primary btn-block m-1">Modificar Usuarios</button>
+							<%						
+						} else {
+							%>
+								<button type="submit" name="be" value="Login" class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
+								<button type="submit" name="bb" value="Login" class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>
+							<%	
+						}
+					%>
 				</form>
 			</div>
 		</section>
