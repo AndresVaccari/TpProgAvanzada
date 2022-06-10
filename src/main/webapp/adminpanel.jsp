@@ -32,7 +32,7 @@
 		</nav>
 	</header>
 	<main class="container mt-5">
-		<form action="">
+		<form action="ServletAdminPanel" method="get">
 			<div class="row">
 				<section class="col-4 d-flex flex-column">
 					<p>Usuarios Activos</p>
@@ -41,7 +41,7 @@
 							%>
 								<p>
 									<%=activo%>
-									<button type="button" type="submit" name="botonDesactivar" class="btn btn-primary m-2 ">Inactivo</button>
+									<button type="submit" name="botonDesactivar" value=<%=activo%> class="btn btn-primary m-2 ">Desactivar</button>
 								</p>
 							<%					
 						}
@@ -55,7 +55,7 @@
 									%>
 										<p>
 											<%=inactivo%>
-											<button type="button" type="submit" name="botonAceptar" class="btn btn-primary m-2 ">Activar</button>
+											<button type="submit" name="botonActivar" value=<%=inactivo%> class="btn btn-primary m-2 ">Activar</button>
 										</p>
 									<%					
 								}
@@ -70,19 +70,19 @@
 						%>
 				</section>
 				<section class="col-4">
-					<p>Usuarios Activos</p>
-						<%
-							for (String pendiente : pendientes) {
-								%>
-									<p>
-										<%=pendiente%>
-										<button type="button" type="submit" name="botonAceptar" class="btn btn-primary m-2 ">Aceptar</button>
-									</p>
-								<%					
-							}
-						%>
+					<p>Usuarios pendientes</p>
+					<%
+						for (String pendiente : pendientes) {
+							%>
+								<p>
+									<%=pendiente%>
+									<button type="submit" name="botonActivar" value=<%=pendiente%> class="btn btn-primary m-2 ">Aceptar</button>
+								</p>
+							<%					
+						}
+					%>
 				</section>
-			</div>
+			</div>	
 		</form>
 	</main>
 </body>

@@ -89,4 +89,44 @@
     <servlet-name>ServletInicio</servlet-name>
     <url-pattern>/ServletInicio</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletActivos</display-name>
+    <servlet-name>ServletActivos</servlet-name>
+    <servlet-class>servlet.ServletActivos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActivos</servlet-name>
+    <url-pattern>/ServletActivos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletActivar</display-name>
+    <servlet-name>ServletActivar</servlet-name>
+    <servlet-class>servlet.ServletActivar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActivar</servlet-name>
+    <url-pattern>/ServletActivar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDesactivar</display-name>
+    <servlet-name>ServletDesactivar</servlet-name>
+    <servlet-class>servlet.ServletDesactivar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDesactivar</servlet-name>
+    <url-pattern>/ServletDesactivar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletRechazar</display-name>
+    <servlet-name>ServletRechazar</servlet-name>
+    <servlet-class>servlet.ServletRechazar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRechazar</servlet-name>
+    <url-pattern>/ServletRechazar</url-pattern>
+  </servlet-mapping>
 </web-app>

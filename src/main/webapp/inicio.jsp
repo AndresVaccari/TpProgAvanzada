@@ -32,8 +32,8 @@
 		<section class="d-flex justify-content-center align-items-center m-5">
 			<div class="d-flex m-5 p-5 bg-light border rounded-4">
 				<form action="ServletInicio">
-					<button type="submit" name="be" value="Login" class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
-					<button type="submit" name="bb" value="Login" class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>		
+					<button type="submit" name="botonMensajes" value="Login" class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
+					<button type="submit" name="botonBandeja" value="Login" class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>		
 					<%
 						if (tipoUsuario.equals("admin")) {
 							%>
