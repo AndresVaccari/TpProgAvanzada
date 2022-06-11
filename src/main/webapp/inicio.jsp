@@ -11,8 +11,8 @@
 </head>
 <body>
 	<%
-		String mensaje = (String)request.getAttribute("mensaje");
-		String tipoUsuario = (String)request.getAttribute("tipoUsuario");
+	String mensaje = (String) request.getAttribute("mensaje");
+	String tipoUsuario = (String) request.getAttribute("tipoUsuario");
 	%>
 	<header>
 		<nav class="navbar bg-light">
@@ -41,12 +41,12 @@
 					<button type="submit" name="botonBandeja" value="Login"
 						class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>
 					<%
-						if (tipoUsuario.equals("admin")) {
-							%>
+					if (tipoUsuario.equals("admin")) {
+					%>
 					<button type="submit" name="botonAdmin" value="Login"
 						class="btn btn-primary btn-block m-1">Modificar Usuarios</button>
-					<%						
-						}
+					<%
+					}
 					%>
 				</form>
 			</div>
