@@ -83,7 +83,6 @@ public class PanelAdmin {
     		request.setAttribute("usuariosInactivos", usuariosInactivosLista);
     		request.getRequestDispatcher("adminpanel.jsp").forward(request, response);	
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
     }
 }

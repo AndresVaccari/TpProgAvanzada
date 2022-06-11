@@ -5,10 +5,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.awt.Window;
 import java.io.IOException;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 import entities.PanelAdmin;
@@ -21,7 +19,6 @@ public class ServletAdminPanel extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -33,7 +30,6 @@ public class ServletAdminPanel extends HttpServlet {
      */
     public ServletAdminPanel() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -73,7 +69,6 @@ public class ServletAdminPanel extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
