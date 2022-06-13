@@ -129,4 +129,14 @@
     <servlet-name>ServletRechazar</servlet-name>
     <url-pattern>/ServletRechazar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletEnviarMensaje</display-name>
+    <servlet-name>ServletEnviarMensaje</servlet-name>
+    <servlet-class>servlet.ServletEnviarMensaje</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEnviarMensaje</servlet-name>
+    <url-pattern>/ServletEnviarMensaje</url-pattern>
+  </servlet-mapping>
 </web-app>

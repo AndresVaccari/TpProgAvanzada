@@ -13,6 +13,7 @@
 	<%
 	String mensaje = (String) request.getAttribute("mensaje");
 	String tipoUsuario = (String) request.getAttribute("tipoUsuario");
+	String usuario = (String) request.getAttribute("usuario");
 	%>
 	<header>
 		<nav class="navbar bg-light">
@@ -36,7 +37,7 @@
 		<section class="d-flex justify-content-center align-items-center m-5">
 			<div class="d-flex m-5 p-5 bg-light border rounded-4">
 				<form action="ServletInicio">
-					<button type="submit" name="botonMensajes" value="Login"
+					<button type="submit" name="botonMensajes" value=<%=usuario %>
 						class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
 					<button type="submit" name="botonBandeja" value="Login"
 						class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>

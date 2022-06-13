@@ -66,6 +66,7 @@ public class ServletLogin extends HttpServlet {
 					}
 					request.setAttribute("tipoUsuario", tipoUsuario);
 					request.setAttribute("mensaje", nombre + " " + apellido);
+					request.setAttribute("usuario", user);
 					request.getRequestDispatcher("inicio.jsp").forward(request, response);
 				}
 				else {
