@@ -35,22 +35,22 @@
 		</nav>
 	</header>
 	<main>
-		<form action="ServletRegistro" method="get">
+		<form action="ServletEnviarMensaje" method="get">
 			<div class="d-flex justify-content-center align-items-center m-5">
 				<div class="d-flex flex-column p-5 bg-light border rounded-4">
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<label class="form-label">Para</label>
-						<input type="text" class="form-control" name="user" />
+						<input type="text" class="form-control" name="destinatario" />
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<label class="form-label">Asunto</label>
-						<input type="password" class="form-control" name="pass" />
+						<input type="password" class="form-control" name="asunto" />
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<textarea rows="4" cols="40" name="mensaje"></textarea>
 					</div>
 					
-					<button type="submit" class="btn btn-primary btn-block mb-2">Enviar Mensaje</button>
+					<button type="submit" class="btn btn-primary btn-block mb-2" name="botonEnviar" value=<%=usuario %>>Enviar Mensaje</button>
 					<button type="submit" class="btn btn-danger btn-block mb-2">Cancelar</button>
 				</div>
 			</div>

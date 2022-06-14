@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+import entities.EstadoUsuario;
+import entities.Mensaje;
 import entities.PanelAdmin;
+import entities.Usuario;
 
 /**
  * Servlet implementation class ServletEnviarMensaje
@@ -41,12 +44,26 @@ public class ServletEnviarMensaje extends HttpServlet {
 			
 			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
 			
+			
+			
 			String botonEnviar = request.getParameter("botonEnviar");
 			
 			if (botonEnviar != null) {
+				
+				Mensaje mensaje = new Mensaje();
+				mensaje.setDestinatario(request.getParameter("destinatario"));
+				mensaje.setAsunto(request.getParameter("asunto"));
+				mensaje.setMensaje(request.getParameter("mensaje"));
+				mensaje.setRemitente(botonEnviar);
+				mensaje.setEstado("Enviado");
+				//mensaje.setTipoMensaje("Remitente ");
+				
 				Statement st = conn.createStatement();
-				st.executeUpdate("DELETE FROM usuario WHERE Usuario = '" + botonRechazar + "'");
-				panel.actualizarPanel(request, response);
+				st.executeUpdate("INSERT INTO `mensaje`"
+						+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `HoraEnvio`, `Estado`, `TipoMensaje`) "                                          
+						+ "VALUES "
+						+ "('" + mensaje.getDestinatario() + "','" + mensaje.getAsunto() + "','" + mensaje.getRemitente() + "','" + mensaje.getMensaje() + "',NOW() ,'" + mensaje.getEstado() + "','" + mensaje.getTipoMensaje() + "')");
+				//panel.actualizarPanel(request, response);
 			}
 				
 		} catch (Exception e) {
