@@ -44,8 +44,6 @@ public class ServletEnviarMensaje extends HttpServlet {
 			
 			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
 			
-			
-			
 			String botonEnviar = request.getParameter("botonEnviar");
 			
 			if (botonEnviar != null) {
@@ -53,16 +51,21 @@ public class ServletEnviarMensaje extends HttpServlet {
 				Mensaje mensaje = new Mensaje();
 				mensaje.setDestinatario(request.getParameter("destinatario"));
 				mensaje.setAsunto(request.getParameter("asunto"));
-				mensaje.setMensaje(request.getParameter("mensaje"));
 				mensaje.setRemitente(botonEnviar);
-				mensaje.setEstado("Enviado");
-				//mensaje.setTipoMensaje("Remitente ");
+				mensaje.setMensaje(request.getParameter("mensaje"));
+				mensaje.setEstado("NoLeido");
+				mensaje.setTipoMensaje("Enviado");
 				
 				Statement st = conn.createStatement();
 				st.executeUpdate("INSERT INTO `mensaje`"
-						+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `HoraEnvio`, `Estado`, `TipoMensaje`) "                                          
+						+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`) "                                          
 						+ "VALUES "
-						+ "('" + mensaje.getDestinatario() + "','" + mensaje.getAsunto() + "','" + mensaje.getRemitente() + "','" + mensaje.getMensaje() + "',NOW() ,'" + mensaje.getEstado() + "','" + mensaje.getTipoMensaje() + "')");
+						+ "('" + mensaje.getDestinatario() + "','" + mensaje.getAsunto() + "','" + mensaje.getRemitente() + "','" + mensaje.getMensaje() + "','" + mensaje.getEstado() + "','" + mensaje.getTipoMensaje() + "')");
+				
+				st.executeUpdate("INSERT INTO `mensaje`"
+						+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`) "                                          
+						+ "VALUES "
+						+ "('" + mensaje.getDestinatario() + "','" + mensaje.getAsunto() + "','" + mensaje.getRemitente() + "','" + mensaje.getMensaje() + "','" + mensaje.getEstado() + "', 'Recibido')");
 				//panel.actualizarPanel(request, response);
 			}
 				

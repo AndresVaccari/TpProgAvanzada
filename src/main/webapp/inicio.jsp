@@ -39,7 +39,7 @@
 				<form action="ServletInicio">
 					<button type="submit" name="botonMensajes" value=<%=usuario %>
 						class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
-					<button type="submit" name="botonBandeja" value="Login"
+					<button type="submit" name="botonBandeja" value=<%=usuario %>
 						class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>
 					<%
 					if (tipoUsuario.equals("admin")) {

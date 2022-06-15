@@ -139,4 +139,14 @@
     <servlet-name>ServletEnviarMensaje</servlet-name>
     <url-pattern>/ServletEnviarMensaje</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletBandejaEntrada</display-name>
+    <servlet-name>ServletBandejaEntrada</servlet-name>
+    <servlet-class>servlet.ServletBandejaEntrada</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletBandejaEntrada</servlet-name>
+    <url-pattern>/ServletBandejaEntrada</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,34 +1,35 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
-import entities.PanelAdmin;
-import entities.PanelBandeja;
+import entities.Mensaje;
 
 /**
- * Servlet implementation class ServletInicio
+ * Servlet implementation class ServletBandejaEntrada
  */
-public class ServletInicio extends HttpServlet {
+public class ServletBandejaEntrada extends HttpServlet {
+	
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 	
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletInicio() {
+    public ServletBandejaEntrada() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,29 +39,24 @@ public class ServletInicio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String botonMensajes = request.getParameter("botonMensajes");
-			if (botonMensajes != null) {
-				request.setAttribute("usuario", botonMensajes);
-				request.getRequestDispatcher("enviarMensaje.jsp").forward(request, response);
-			}
-			String botonBandeja = request.getParameter("botonBandeja");
-			if (botonBandeja != null) {
-				PanelBandeja panel = new PanelBandeja();
-				panel.actualizarPanel(request, response, botonBandeja);
-			}
-			String botonAdmin = request.getParameter("botonAdmin");
-			if (botonAdmin != null) {
-				PanelAdmin panel = new PanelAdmin();
-				panel.actualizarPanel(request, response);
-			}
+			
+			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
+			
+				
+				
+				Statement st = conn.createStatement();
+				st.executeUpdate("SELECT * FROM `mensaje`"
+						+ "WHER");
+				//panel.actualizarPanel(request, response);
+				
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */ 
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Enviar nuevo mensaje</title>
+<title>Bandeja de entrada</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -44,13 +44,12 @@
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<label class="form-label">Asunto</label>
-						<input type="text" class="form-control" name="asunto" />
+						<input type="password" class="form-control" name="asunto" />
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<textarea rows="4" cols="40" name="mensaje"></textarea>
 					</div>
 					
-					<button type="submit" class="btn btn-primary btn-block mb-2" name="botonEnviar" value=<%=usuario %>>Enviar Mensaje</button>
 					<button type="submit" class="btn btn-danger btn-block mb-2">Cancelar</button>
 				</div>
 			</div>

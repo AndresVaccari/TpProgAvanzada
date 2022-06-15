@@ -7,7 +7,6 @@ public class Mensaje {
 	private String asunto;
 	private String remitente;
 	private String mensaje;
-	private Date horaEnvio;
 	private String estado;
 	private String tipoMensaje;
 
@@ -15,12 +14,12 @@ public class Mensaje {
     	
     }
 	
-    public Mensaje(String destinatario, String asunto, String mensaje, Date horaEnvio, String estado, String tipoMensaje)
+    public Mensaje(String destinatario, String asunto, String remitente, String mensaje, String estado, String tipoMensaje)
     {
     	setDestinatario(destinatario);
     	setAsunto(asunto);
+    	setRemitente(remitente);
     	setMensaje(mensaje);
-    	setHoraEnvio(horaEnvio);
     	setEstado(estado);
     	setTipoMensaje(tipoMensaje);
     }
@@ -32,7 +31,7 @@ public class Mensaje {
 	public void setDestinatario(String destinatario) {
 		this.destinatario = destinatario;
 	}
-
+	
 	public String getAsunto() {
 		return asunto;
 	}
@@ -55,14 +54,6 @@ public class Mensaje {
 
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
-	}
-
-	public Date getHoraEnvio() {
-		return horaEnvio;
-	}
-
-	public void setHoraEnvio(Date horaEnvio) {
-		this.horaEnvio = horaEnvio;
 	}
 
 	public String getEstado() {
