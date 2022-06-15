@@ -43,10 +43,8 @@ public class ServletBandejaEntrada extends HttpServlet {
 			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
 			
 				
-				
 				Statement st = conn.createStatement();
-				st.executeUpdate("SELECT * FROM `mensaje`"
-						+ "WHER");
+				st.executeUpdate("SELECT * FROM `mensaje` WHERE ");
 				//panel.actualizarPanel(request, response);
 				
 		} catch (Exception e) {

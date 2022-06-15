@@ -16,8 +16,9 @@ public class PanelBandeja {
         	
         	Statement stContadorMensajes = conn.createStatement();
     		Statement stMensajes = conn.createStatement();
-    		ResultSet contadorMensajes = stContadorMensajes.executeQuery("SELECT COUNT(*) FROM mensaje WHERE Destinario =" + usuario + "AND TipoMensaje = 'Recibido'");
-    		ResultSet mensajes = stMensajes.executeQuery("SELECT * FROM mensaje WHERE Destinario =\" + usuario + \"AND TipoMensaje = 'Recibido'");
+    		ResultSet contadorMensajes = stContadorMensajes.executeQuery("SELECT COUNT(*) FROM mensaje WHERE Destinario ='" + usuario + "' AND TipoMensaje = 'Recibido'");
+    		ResultSet mensajes = stMensajes.executeQuery("SELECT * FROM mensaje WHERE Destinario = '" + usuario + "' AND TipoMensaje = 'Recibido'");
+    		
     		
     		contadorMensajes.next();
     		int cantidadMensajes = contadorMensajes.getInt(1);	
@@ -30,7 +31,9 @@ public class PanelBandeja {
     			mensajes.next();
     		}
     		
-    		request.setAttribute("mensajes", mensajes);
+    		//System.out.println(listaMensajes.length);
+    		
+    		request.setAttribute("mensajes", listaMensajes);
     		request.getRequestDispatcher("bandejaEntrada.jsp").forward(request, response);	
 		} catch (Exception e) {
 		}
