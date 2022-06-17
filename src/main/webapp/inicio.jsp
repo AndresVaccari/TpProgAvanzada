@@ -39,6 +39,8 @@
 				<form action="ServletInicio">
 					<button type="submit" name="botonMensajes" value=<%=usuario %>
 						class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
+					<button type="submit" name="botonEnviados" value=<%=usuario %>
+						class="btn btn-primary btn-block m-1">Mensajes Enviados</button>
 					<button type="submit" name="botonBandeja" value=<%=usuario %>
 						class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>
 					<%

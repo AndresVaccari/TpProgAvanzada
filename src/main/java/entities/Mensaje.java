@@ -1,7 +1,5 @@
 package entities;
 
-import java.sql.Date;
-
 public class Mensaje {
 	private String destinatario;
 	private String asunto;
@@ -9,20 +7,30 @@ public class Mensaje {
 	private String mensaje;
 	private String estado;
 	private String tipoMensaje;
+	private int IDMensaje;
 
-    public Mensaje(){
-    	
-    }
-	
-    public Mensaje(String destinatario, String asunto, String remitente, String mensaje, String estado, String tipoMensaje)
-    {
-    	setDestinatario(destinatario);
-    	setAsunto(asunto);
-    	setRemitente(remitente);
-    	setMensaje(mensaje);
-    	setEstado(estado);
-    	setTipoMensaje(tipoMensaje);
-    }
+	public Mensaje() {
+
+	}
+
+	public Mensaje(String destinatario, String asunto, String remitente,
+			String mensaje, String estado, String tipoMensaje, int IDMensaje) {
+		setDestinatario(destinatario);
+		setAsunto(asunto);
+		setRemitente(remitente);
+		setMensaje(mensaje);
+		setEstado(estado);
+		setTipoMensaje(tipoMensaje);
+		setIDMensaje(IDMensaje);
+	}
+
+	public void setIDMensaje(int IDMensaje) {
+		this.IDMensaje = IDMensaje;
+	}
+
+	public int getIDMensaje() {
+		return IDMensaje;
+	}
 
 	public String getDestinatario() {
 		return destinatario;
@@ -31,7 +39,7 @@ public class Mensaje {
 	public void setDestinatario(String destinatario) {
 		this.destinatario = destinatario;
 	}
-	
+
 	public String getAsunto() {
 		return asunto;
 	}
