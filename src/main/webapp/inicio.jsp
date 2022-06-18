@@ -25,7 +25,7 @@
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
 						<li class="nav-item">
-							<button type="submit" name="bl" class="btn btn-secondary m-2">Cerrar
+							<button type="submit" name="botonCerrarSesion" class="btn btn-secondary m-2">Cerrar
 								Sesion</button>
 						</li>
 					</ul>

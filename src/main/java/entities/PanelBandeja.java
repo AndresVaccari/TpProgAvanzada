@@ -8,14 +8,17 @@ import java.sql.Statement;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class PanelBandeja {
 	public void actualizarPanel(HttpServletRequest request,
-			HttpServletResponse response, String usuario)
-			throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			java.sql.Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/tpfinal", "root", "");
+
+			HttpSession session = request.getSession();
+			String usuario = session.getAttribute("usuario").toString();
 
 			Statement stContadorMensajes = conn.createStatement();
 			Statement stMensajes = conn.createStatement();

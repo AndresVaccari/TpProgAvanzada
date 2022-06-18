@@ -42,9 +42,9 @@ public class ServletInicio extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			
+
 			String usuario = session.getAttribute("usuario").toString();
-			
+
 			String botonMensajes = request.getParameter("botonMensajes");
 			if (botonMensajes != null) {
 				request.getRequestDispatcher("enviarMensaje.jsp")
@@ -53,12 +53,12 @@ public class ServletInicio extends HttpServlet {
 			String botonEnviados = request.getParameter("botonEnviados");
 			if (botonEnviados != null) {
 				PanelEnviados panel = new PanelEnviados();
-				panel.actualizarPanel(request, response, usuario);
+				panel.actualizarPanel(request, response);
 			}
 			String botonBandeja = request.getParameter("botonBandeja");
 			if (botonBandeja != null) {
 				PanelBandeja panel = new PanelBandeja();
-				panel.actualizarPanel(request, response, usuario);
+				panel.actualizarPanel(request, response);
 			}
 			String botonAdmin = request.getParameter("botonAdmin");
 			if (botonAdmin != null) {

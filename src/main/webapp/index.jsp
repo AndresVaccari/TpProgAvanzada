@@ -21,11 +21,11 @@
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
 						<li class="nav-item">
-							<button type="submit" name="bl" class="btn btn-secondary m-2">Iniciar
+							<button type="submit" name="botonLogin" class="btn btn-secondary m-2">Iniciar
 								Sesion</button>
 						</li>
 						<li class="nav-item">
-							<button type="submit" name="br" class="btn btn-secondary m-2">Registrarse</button>
+							<button type="submit" name="botonRegistro" class="btn btn-secondary m-2">Registrarse</button>
 						</li>
 					</ul>
 				</form>

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import entities.PanelInicio;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,21 +29,22 @@ public class ServletNavbar extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String br = request.getParameter("br");
-		if (br != null) {
+		String botonRegistro = request.getParameter("botonRegistro");
+		if (botonRegistro != null) {
 			response.sendRedirect("registro.jsp");
 		}
-		String bl = request.getParameter("bl");
-		if (bl != null) {
+		String botonLogin = request.getParameter("botonLogin");
+		if (botonLogin != null) {
 			response.sendRedirect("login.jsp");
 		}
-		String bs = request.getParameter("bs");
-		if (bs != null) {
+		String botonIndex = request.getParameter("bs");
+		if (botonIndex != null) {
 			response.sendRedirect("index.jsp");
 		}
 		String botonVolver = request.getParameter("botonVolver");
 		if (botonVolver != null) {
-
+			PanelInicio panel = new PanelInicio();
+			panel.actualizarPanel(request, response);
 		}
 	}
 

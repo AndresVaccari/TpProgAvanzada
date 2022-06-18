@@ -25,11 +25,8 @@
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
 						<li class="nav-item">
-							<button type="submit" name="bl" class="btn btn-secondary m-2">Iniciar
-								Sesion</button>
-						</li>
-						<li class="nav-item">
-							<button type="submit" name="br" class="btn btn-secondary m-2">Registrarse</button>
+							<button type="submit" name="botonVolver" value="volver"
+								class="btn btn-secondary m-2 ">Volver</button>
 						</li>
 					</ul>
 				</form>
@@ -44,8 +41,14 @@
 						<%
 						for (Mensaje mensaje : mensajes) {
 							%>
-							<li class="list-group-item">
-								<b><%=mensaje.getRemitente()%> --- Asunto: </b><%=mensaje.getAsunto()%> 
+							<li class="list-group-item d-flex justify-content-between align-items-center">
+								<p class="d-flex m-0">
+									<b><%=mensaje.getRemitente()%> --- Asunto: </b><%=mensaje.getAsunto()%> 
+								</p>
+								<p class="d-flex m-0">
+									<button type="submit" class="btn btn-primary me-1" name="botonLeer" value=<%=mensaje.getIDMensaje()%> >Leer mensaje</button>
+									<button type="submit" class="btn btn-primary me-1" name="botonBorrar" value=<%=mensaje.getIDMensaje()%>>Borrar Mensaje</button>
+								</p>
 							</li>
 							<%
 						}
