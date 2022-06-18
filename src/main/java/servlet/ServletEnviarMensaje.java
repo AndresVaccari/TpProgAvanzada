@@ -1,15 +1,19 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import entities.Mensaje;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletEnviarMensaje
@@ -48,40 +52,65 @@ public class ServletEnviarMensaje extends HttpServlet {
 
 			if (botonEnviar != null) {
 
-				Statement stUltimoID = conn.createStatement();
-				ResultSet ultimoID = stUltimoID.executeQuery(
-						"SELECT * FROM mensaje ORDER BY ID DESC LIMIT 1");
-
-				Mensaje mensaje = new Mensaje();
-				mensaje.setDestinatario(request.getParameter("destinatario"));
-				mensaje.setAsunto(request.getParameter("asunto"));
-				mensaje.setRemitente(botonEnviar);
-				mensaje.setMensaje(request.getParameter("mensaje"));
-				mensaje.setEstado("NoLeido");
-				mensaje.setTipoMensaje("Enviado");
-				if (ultimoID.next()) {
-					mensaje.setIDMensaje(ultimoID.getInt(7) + 1);
-				} else {
-					mensaje.setIDMensaje(0);
+				HttpSession session = request.getSession();
+				String usuario = session.getAttribute("usuario").toString();
+				
+				String destinatarios = request.getParameter("destinatario").toString();
+				
+				String [] arrayDestinatarios = destinatarios.split(",");
+				
+				for (String destinatario : arrayDestinatarios) {
+					
+					Statement stUltimoID = conn.createStatement();
+					ResultSet ultimoID = stUltimoID.executeQuery(
+							"SELECT * FROM mensaje ORDER BY ID DESC LIMIT 1");
+					
+					Mensaje mensaje = new Mensaje();
+					mensaje.setDestinatario(destinatario.trim());
+					mensaje.setAsunto(request.getParameter("asunto"));
+					mensaje.setRemitente(usuario); 
+					mensaje.setMensaje(request.getParameter("mensaje"));
+					mensaje.setEstado("NoLeido");
+					mensaje.setTipoMensaje("Enviado");
+					if (ultimoID.next()) {
+						mensaje.setIDMensaje(ultimoID.getInt(7) + 1);
+					} else {
+						mensaje.setIDMensaje(0);
+					}
+					
+					Statement stValidacionUsuario = conn.createStatement();
+					ResultSet validacionUsuario = stValidacionUsuario.executeQuery("SELECT * FROM `usuario` WHERE `Usuario` = '" + mensaje.getDestinatario() + "'");
+					
+					if (validacionUsuario.next()) {
+						Statement st = conn.createStatement();
+						st.executeUpdate("INSERT INTO `mensaje`"
+								+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`, `ID`) "
+								+ "VALUES " + "('" + mensaje.getDestinatario() + "','"
+								+ mensaje.getAsunto() + "','" + mensaje.getRemitente()
+								+ "','" + mensaje.getMensaje() + "','"
+								+ mensaje.getEstado() + "','" + mensaje.getTipoMensaje()
+								+ "','" + mensaje.getIDMensaje() + "')");
+						st.executeUpdate("INSERT INTO `mensaje`"
+								+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`, `ID`) "
+								+ "VALUES " + "('" + mensaje.getDestinatario() + "','"
+								+ mensaje.getAsunto() + "','" + mensaje.getRemitente()
+								+ "','" + mensaje.getMensaje() + "','"
+								+ mensaje.getEstado() + "', 'Recibido', '"
+								+ mensaje.getIDMensaje() + "')");
+					}
+					else {
+						PrintWriter out = response.getWriter();  
+						out.println("<script type=\"text/javascript\">");
+						out.println("location='enviarMensaje.jsp';");
+						out.println("alert('Destinatario inexistente');");
+						out.println("</script>");	
+					}
 				}
-				Statement st = conn.createStatement();
-				System.out.println("Primer mensaje");
-				st.executeUpdate("INSERT INTO `mensaje`"
-						+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`, `ID`) "
-						+ "VALUES " + "('" + mensaje.getDestinatario() + "','"
-						+ mensaje.getAsunto() + "','" + mensaje.getRemitente()
-						+ "','" + mensaje.getMensaje() + "','"
-						+ mensaje.getEstado() + "','" + mensaje.getTipoMensaje()
-						+ "','" + mensaje.getIDMensaje() + "')");
-				System.out.println("Segundo mensaje");
-				st.executeUpdate("INSERT INTO `mensaje`"
-						+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`, `ID`) "
-						+ "VALUES " + "('" + mensaje.getDestinatario() + "','"
-						+ mensaje.getAsunto() + "','" + mensaje.getRemitente()
-						+ "','" + mensaje.getMensaje() + "','"
-						+ mensaje.getEstado() + "', 'Recibido', '"
-						+ mensaje.getIDMensaje() + "')");
-				// panel.actualizarPanel(request, response);
+				PrintWriter out = response.getWriter();  
+				out.println("<script type=\"text/javascript\">");
+				out.println("location='enviarMensaje.jsp';");
+				out.println("alert('Mensaje enviado.');");
+				out.println("</script>");
 			}
 
 		} catch (Exception e) {

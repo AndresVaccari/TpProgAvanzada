@@ -37,11 +37,14 @@
 		<section class="d-flex justify-content-center align-items-center m-5">
 			<div class="d-flex m-5 p-5 bg-light border rounded-4">
 				<form action="ServletInicio">
-					<button type="submit" name="botonMensajes" value=<%=usuario %>
+				
+					<button type="submit" name="botonMensajes"
 						class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
-					<button type="submit" name="botonEnviados" value=<%=usuario %>
+						
+					<button type="submit" name="botonEnviados"
 						class="btn btn-primary btn-block m-1">Mensajes Enviados</button>
-					<button type="submit" name="botonBandeja" value=<%=usuario %>
+						
+					<button type="submit" name="botonBandeja"
 						class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>
 					<%
 					if (tipoUsuario.equals("admin")) {
@@ -51,6 +54,7 @@
 					<%
 					}
 					%>
+					
 				</form>
 			</div>
 		</section>

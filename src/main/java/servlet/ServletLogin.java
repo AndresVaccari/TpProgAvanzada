@@ -4,6 +4,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
@@ -56,6 +58,9 @@ public class ServletLogin extends HttpServlet {
 			
 			if (rs.next()) {
 				if(rs.getInt(7) == EstadoUsuario.Activo.ordinal()) {
+					
+					HttpSession session = request.getSession();
+					
 					String nombre = rs.getString(2);
 					String apellido = rs.getString(3);
 					String tipoUsuario;
@@ -64,6 +69,11 @@ public class ServletLogin extends HttpServlet {
 					} else {
 						tipoUsuario = "user";
 					}
+					//
+					session.setAttribute("usuario", user);
+					session.setAttribute("tipoUsuario", tipoUsuario);
+					session.setAttribute("nombre", nombre);
+					//
 					request.setAttribute("tipoUsuario", tipoUsuario);
 					request.setAttribute("mensaje", nombre + " " + apellido);
 					request.setAttribute("usuario", user);

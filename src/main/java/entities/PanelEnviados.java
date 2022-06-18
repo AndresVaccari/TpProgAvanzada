@@ -16,7 +16,7 @@ public class PanelEnviados {
 		try {
 			java.sql.Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/tpfinal", "root", "");
-
+			
 			Statement stContadorMensajes = conn.createStatement();
 			Statement stMensajes = conn.createStatement();
 			ResultSet contadorMensajes = stContadorMensajes.executeQuery(

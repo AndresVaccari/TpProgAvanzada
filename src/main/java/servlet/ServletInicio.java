@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletInicio
@@ -40,21 +41,24 @@ public class ServletInicio extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
+			HttpSession session = request.getSession();
+			
+			String usuario = session.getAttribute("usuario").toString();
+			
 			String botonMensajes = request.getParameter("botonMensajes");
 			if (botonMensajes != null) {
-				request.setAttribute("usuario", botonMensajes);
 				request.getRequestDispatcher("enviarMensaje.jsp")
 						.forward(request, response);
 			}
 			String botonEnviados = request.getParameter("botonEnviados");
-			if (botonMensajes != null) {
+			if (botonEnviados != null) {
 				PanelEnviados panel = new PanelEnviados();
-				panel.actualizarPanel(request, response, botonEnviados);
+				panel.actualizarPanel(request, response, usuario);
 			}
 			String botonBandeja = request.getParameter("botonBandeja");
 			if (botonBandeja != null) {
 				PanelBandeja panel = new PanelBandeja();
-				panel.actualizarPanel(request, response, botonBandeja);
+				panel.actualizarPanel(request, response, usuario);
 			}
 			String botonAdmin = request.getParameter("botonAdmin");
 			if (botonAdmin != null) {

@@ -9,7 +9,8 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <%
-	String usuario = (String)request.getAttribute("usuario");
+
+	//String usuario = (String)request.getAttribute("usuario");
 %>
 </head>
 <body>
@@ -47,11 +48,10 @@
 						<input type="text" class="form-control" name="asunto" />
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
-						<textarea rows="4" cols="40" name="mensaje"></textarea>
+						<textarea rows="4" cols="40" name="mensaje" placeholder="Mensaje"></textarea>
 					</div>
 					
-					<button type="submit" class="btn btn-primary btn-block mb-2" name="botonEnviar" value=<%=usuario %>>Enviar Mensaje</button>
-					<button type="submit" class="btn btn-danger btn-block mb-2">Cancelar</button>
+					<button type="submit" class="btn btn-primary btn-block mb-2" name="botonEnviar">Enviar Mensaje</button>
 				</div>
 			</div>
 		</form>
