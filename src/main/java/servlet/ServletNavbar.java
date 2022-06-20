@@ -2,11 +2,14 @@ package servlet;
 
 import java.io.IOException;
 
+import entities.PanelBandejaEntrada;
+import entities.PanelBandejaSalida;
 import entities.PanelInicio;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletNavbar
@@ -39,12 +42,37 @@ public class ServletNavbar extends HttpServlet {
 		}
 		String botonIndex = request.getParameter("bs");
 		if (botonIndex != null) {
-			response.sendRedirect("index.jsp");
+			HttpSession session = request.getSession();
+			try {
+				session.getAttribute("usuario").toString();
+				PanelInicio panel = new PanelInicio();
+				panel.actualizarPanel(request, response);
+			} catch (NullPointerException e) {
+				response.sendRedirect("index.jsp");
+			}
 		}
 		String botonVolver = request.getParameter("botonVolver");
 		if (botonVolver != null) {
 			PanelInicio panel = new PanelInicio();
 			panel.actualizarPanel(request, response);
+		}
+		String botonVolverRecibidos = request
+				.getParameter("botonVolverRecibidos");
+		if (botonVolverRecibidos != null) {
+			PanelBandejaEntrada panel = new PanelBandejaEntrada();
+			panel.actualizarPanel(request, response);
+		}
+		String botonVolverEnviados = request
+				.getParameter("botonVolverEnviados");
+		if (botonVolverEnviados != null) {
+			PanelBandejaSalida panel = new PanelBandejaSalida();
+			panel.actualizarPanel(request, response);
+		}
+		String botonLogOut = request.getParameter("botonLogOut");
+		if (botonLogOut != null) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect("index.jsp");
 		}
 	}
 

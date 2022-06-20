@@ -37,28 +37,25 @@
 			<div class="d-flex justify-content-center align-items-center m-5">
 				<div class="d-flex flex-column p-5 bg-light border rounded-4">
 					<div class="mx-auto mb-4" style="width: 500px;">
-						<input type="text" class="form-control" name="user" /> <label
-							class="form-label">Usuario</label>
+						<input type="text" class="form-control" name="user" placeholder="Usuario"/>
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
-						<input type="password" class="form-control" name="pass" /> <label
-							class="form-label">Contraseña</label>
+						<input type="password" class="form-control" name="pass" placeholder="Contraseña"/>
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
-						<input type="text" class="form-control" name="doc" /> <label
-							class="form-label">Documento</label>
+						<input type="password" class="form-control" name="pass2" placeholder="Repetir contraseña"/>
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
-						<input type="text" class="form-control" name="name" /> <label
-							class="form-label">Nombre</label>
+						<input type="text" class="form-control" name="doc" placeholder="Documento"/>
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
-						<input type="text" class="form-control" name="lname" /> <label
-							class="form-label">Apellido</label>
+						<input type="text" class="form-control" name="name" placeholder="Nombre"/>
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
-						<input type="text" class="form-control" name="email" /> <label
-							class="form-label">Email</label>
+						<input type="text" class="form-control" name="lname" placeholder="Apellido"/>
+					</div>
+					<div class="mx-auto mb-4" style="width: 500px;">
+						<input type="text" class="form-control" name="email" placeholder="Email"/>
 					</div>
 					<button type="submit" class="btn btn-primary btn-block mb-4">Registrarse!</button>
 				</div>

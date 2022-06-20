@@ -1,25 +1,25 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
-import entities.PanelAdmin;
 import entities.PanelBandejaEntrada;
-import entities.PanelBandejaSalida;
+import entities.PanelMensaje;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServletInicio
+ * Servlet implementation class ServletBandejaEntrada
  */
-public class ServletInicio extends HttpServlet {
+public class ServletBandejaSalida extends HttpServlet {
+
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -29,7 +29,7 @@ public class ServletInicio extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ServletInicio() {
+	public ServletBandejaSalida() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,32 +41,26 @@ public class ServletInicio extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			HttpSession session = request.getSession();
+			java.sql.Connection conn = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/tpfinal", "root", "");
 
-			String usuario = session.getAttribute("usuario").toString();
-
-			String botonMensajes = request.getParameter("botonMensajes");
-			if (botonMensajes != null) {
-				request.getRequestDispatcher("enviarMensaje.jsp")
-						.forward(request, response);
+			String botonLeer = request.getParameter("botonLeer");
+			if (botonLeer != null) {
+				PanelMensaje panel = new PanelMensaje();
+				panel.actualizarPanel(request, response,
+						Integer.parseInt(botonLeer), "botonVolverEnviados");
 			}
-			String botonEnviados = request.getParameter("botonEnviados");
-			if (botonEnviados != null) {
-				PanelBandejaSalida panel = new PanelBandejaSalida();
-				panel.actualizarPanel(request, response);
-			}
-			String botonBandeja = request.getParameter("botonBandeja");
-			if (botonBandeja != null) {
+			String botonBorrar = request.getParameter("botonBorrar");
+			if (botonBorrar != null) {
 				PanelBandejaEntrada panel = new PanelBandejaEntrada();
+				Statement st = conn.createStatement();
+				st.executeUpdate("DELETE FROM mensaje WHERE ID = '"
+						+ botonBorrar + "' AND TipoMensaje = 'Enviado'");
 				panel.actualizarPanel(request, response);
 			}
-			String botonAdmin = request.getParameter("botonAdmin");
-			if (botonAdmin != null) {
-				PanelAdmin panel = new PanelAdmin();
-				panel.actualizarPanel(request, response);
-			}
+
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 

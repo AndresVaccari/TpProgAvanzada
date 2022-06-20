@@ -13,7 +13,6 @@
 	String [] pendientes = (String[])request.getAttribute("usuariosPendientes");
 	String [] activos = (String[])request.getAttribute("usuariosActivos");
 	String [] inactivos = (String[])request.getAttribute("usuariosInactivos");
-	boolean hayInactivos = (boolean)request.getAttribute("hayInactivos");
 %>
 </head>
 <body>
@@ -39,53 +38,72 @@
 		<form action="ServletAdminPanel" method="get">
 			<div class="row">
 				<section class="col-4 d-flex flex-column">
-					<p>Usuarios Activos</p>
+					<p><b>Usuarios Activos</b></p>
 					<%
+					if(activos.length != 0) {
 						for (String activo : activos) {
 							%>
-					<p>
-						<%=activo%>
-						<button type="submit" name="botonDesactivar" value=<%=activo%>
-							class="btn btn-primary m-2 ">Desactivar</button>
-					</p>
-					<%					
+							<p>
+								<%=activo%>
+								<button type="submit" name="botonDesactivar" value=<%=activo%>
+									class="btn btn-primary m-2 ">Desactivar</button>
+							</p>
+							<%					
+						}
+					} else {
+						%>
+						<p>
+							No hay usuarios Activos
+						</p>
+						<%		
 						}
 					%>
 				</section>
 				<section class="col-4">
-					<p>Usuarios Inactivos</p>
+					<p><b>Usuarios Inactivos</b></p>
 					<%
-							if(hayInactivos) {
-								for (String inactivo : inactivos) {
-									%>
-					<p>
-						<%=inactivo%>
-						<button type="submit" name="botonActivar" value=<%=inactivo%>
-							class="btn btn-primary m-2 ">Activar</button>
-					</p>
-					<%					
-								}
-							} else {
-								%>
-					<p>
-						<%=inactivos[0]%>
-					</p>
-					<%		
-							}
-							
+					if(inactivos.length != 0) {
+						for (String inactivo : inactivos) {
+							%>
+							<p>
+								<%=inactivo%>
+								<button type="submit" name="botonActivar" value=<%=inactivo%>
+									class="btn btn-primary m-2 ">Activar</button>
+								<button type="submit" name="botonRechazar" value=<%=inactivo%>
+								class="btn btn-primary m-2 ">Eliminar</button>
+							</p>
+							<%					
+						}
+					} else {
 						%>
+						<p>
+							No hay usuarios Inactivos
+						</p>
+						<%		
+						}
+					%>
 				</section>
 				<section class="col-4">
-					<p>Usuarios pendientes</p>
+					<p><b>Usuarios Pendientes</b></p>
 					<%
+					if(pendientes.length != 0) {
 						for (String pendiente : pendientes) {
 							%>
-					<p>
-						<%=pendiente%>
-						<button type="submit" name="botonActivar" value=<%=pendiente%>
-							class="btn btn-primary m-2 ">Aceptar</button>
-					</p>
-					<%					
+							<p>
+								<%=pendiente%>
+								<button type="submit" name="botonActivar" value=<%=pendiente%>
+									class="btn btn-primary m-2 ">Aceptar</button>
+								<button type="submit" name="botonRechazar" value=<%=pendiente%>
+									class="btn btn-primary m-2 ">Rechazar</button>
+							</p>
+							<%					
+						}
+					} else {
+						%>
+						<p>
+							No hay usuarios Pendientes
+						</p>
+						<%		
 						}
 					%>
 				</section>

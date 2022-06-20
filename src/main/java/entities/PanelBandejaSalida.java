@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class PanelBandeja {
+public class PanelBandejaSalida {
 	public void actualizarPanel(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -23,11 +23,11 @@ public class PanelBandeja {
 			Statement stContadorMensajes = conn.createStatement();
 			Statement stMensajes = conn.createStatement();
 			ResultSet contadorMensajes = stContadorMensajes.executeQuery(
-					"SELECT COUNT(*) FROM mensaje WHERE Destinario ='" + usuario
-							+ "' AND TipoMensaje = 'Recibido'");
+					"SELECT COUNT(*) FROM mensaje WHERE Remitente ='" + usuario
+							+ "' AND TipoMensaje = 'Enviado'");
 			ResultSet mensajes = stMensajes
-					.executeQuery("SELECT * FROM mensaje WHERE Destinario = '"
-							+ usuario + "' AND TipoMensaje = 'Recibido'");
+					.executeQuery("SELECT * FROM mensaje WHERE Remitente = '"
+							+ usuario + "' AND TipoMensaje = 'Enviado'");
 
 			contadorMensajes.next();
 			int cantidadMensajes = contadorMensajes.getInt(1);
@@ -46,7 +46,7 @@ public class PanelBandeja {
 			// System.out.println(listaMensajes.length);
 
 			request.setAttribute("mensajes", listaMensajes);
-			request.getRequestDispatcher("bandejaEntrada.jsp").forward(request,
+			request.getRequestDispatcher("bandejaSalida.jsp").forward(request,
 					response);
 		} catch (Exception e) {
 		}

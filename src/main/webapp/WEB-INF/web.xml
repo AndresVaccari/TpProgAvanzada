@@ -149,4 +149,14 @@
     <servlet-name>ServletBandejaEntrada</servlet-name>
     <url-pattern>/ServletBandejaEntrada</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletBandejaSalida</display-name>
+    <servlet-name>ServletBandejaSalida</servlet-name>
+    <servlet-class>servlet.ServletBandejaSalida</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletBandejaSalida</servlet-name>
+    <url-pattern>/ServletBandejaSalida</url-pattern>
+  </servlet-mapping>
 </web-app>

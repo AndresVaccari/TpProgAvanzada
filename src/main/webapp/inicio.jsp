@@ -25,7 +25,7 @@
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
 						<li class="nav-item">
-							<button type="submit" name="botonCerrarSesion" class="btn btn-secondary m-2">Cerrar
+							<button type="submit" name="botonLogOut" class="btn btn-secondary m-2">Cerrar
 								Sesion</button>
 						</li>
 					</ul>
@@ -42,7 +42,7 @@
 						class="btn btn-primary btn-block m-1">Enviar Mensaje</button>
 						
 					<button type="submit" name="botonEnviados"
-						class="btn btn-primary btn-block m-1">Mensajes Enviados</button>
+						class="btn btn-primary btn-block m-1">Bandeja de Salida</button>
 						
 					<button type="submit" name="botonBandeja"
 						class="btn btn-primary btn-block m-1">Bandeja de Entrada</button>
