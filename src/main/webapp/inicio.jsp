@@ -20,7 +20,9 @@
 			<div class="container-fluid">
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<button type="submit" name="bs"
-						class="btn btn-link navbar-brand m-2">Logo</button>
+						class="btn btn-link navbar-brand">
+							<img alt="Logo" width="120px" src="img/mail.svg">
+						</button>
 				</form>
 				<form class="d-flex" action="ServletNavbar" method="get">
 					<ul class="nav">
