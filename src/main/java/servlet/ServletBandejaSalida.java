@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-import entities.PanelBandejaEntrada;
+import entities.PanelBandejaSalida;
 import entities.PanelMensaje;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -52,7 +52,7 @@ public class ServletBandejaSalida extends HttpServlet {
 			}
 			String botonBorrar = request.getParameter("botonBorrar");
 			if (botonBorrar != null) {
-				PanelBandejaEntrada panel = new PanelBandejaEntrada();
+				PanelBandejaSalida panel = new PanelBandejaSalida();
 				Statement st = conn.createStatement();
 				st.executeUpdate("DELETE FROM mensaje WHERE ID = '"
 						+ botonBorrar + "' AND TipoMensaje = 'Enviado'");

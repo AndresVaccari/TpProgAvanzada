@@ -6,8 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
 import entities.Mensaje;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -54,59 +52,73 @@ public class ServletEnviarMensaje extends HttpServlet {
 
 				HttpSession session = request.getSession();
 				String usuario = session.getAttribute("usuario").toString();
-				
-				String destinatarios = request.getParameter("destinatario").toString();
-				
-				String [] arrayDestinatarios = destinatarios.split(",");
-				
+
+				String destinatarios = request.getParameter("destinatario")
+						.toString();
+
+				String[] arrayDestinatarios = destinatarios.split(",");
+
+				Statement stValidacionUsuario;
+				ResultSet validacionUsuario;
+
+				boolean existeDestinatario = true;
+
 				for (String destinatario : arrayDestinatarios) {
-					
-					Statement stUltimoID = conn.createStatement();
-					ResultSet ultimoID = stUltimoID.executeQuery(
-							"SELECT * FROM mensaje ORDER BY ID DESC LIMIT 1");
-					
-					Mensaje mensaje = new Mensaje();
-					mensaje.setDestinatario(destinatario.trim());
-					mensaje.setAsunto(request.getParameter("asunto"));
-					mensaje.setRemitente(usuario); 
-					mensaje.setMensaje(request.getParameter("mensaje"));
-					mensaje.setEstado("NoLeido");
-					mensaje.setTipoMensaje("Enviado");
-					if (ultimoID.next()) {
-						mensaje.setIDMensaje(ultimoID.getInt(7) + 1);
-					} else {
-						mensaje.setIDMensaje(0);
+					stValidacionUsuario = conn.createStatement();
+					validacionUsuario = stValidacionUsuario.executeQuery(
+							"SELECT * FROM `usuario` WHERE `Usuario` = '"
+									+ destinatario.trim() + "'");
+					if (!validacionUsuario.next()
+							|| validacionUsuario.getInt(7) != 1) {
+						existeDestinatario = false;
+						PrintWriter out = response.getWriter();
+						out.println("<script type=\"text/javascript\">");
+						out.println("location='enviarMensaje.jsp';");
+						out.println(
+								"alert('Usuario inexistente o inactivo en lista');");
+						out.println("</script>");
 					}
-					
-					Statement stValidacionUsuario = conn.createStatement();
-					ResultSet validacionUsuario = stValidacionUsuario.executeQuery("SELECT * FROM `usuario` WHERE `Usuario` = '" + mensaje.getDestinatario() + "'");
-					
-					if (validacionUsuario.next()) {
+				}
+				if (existeDestinatario) {
+					for (String destinatario : arrayDestinatarios) {
+						Statement stUltimoID = conn.createStatement();
+						ResultSet ultimoID = stUltimoID.executeQuery(
+								"SELECT * FROM mensaje ORDER BY ID DESC LIMIT 1");
+
+						Mensaje mensaje = new Mensaje();
+						mensaje.setDestinatario(destinatario.trim());
+						mensaje.setAsunto(request.getParameter("asunto"));
+						mensaje.setRemitente(usuario);
+						mensaje.setMensaje(request.getParameter("mensaje"));
+						mensaje.setEstado("NoLeido");
+						mensaje.setTipoMensaje("Enviado");
+						if (ultimoID.next()) {
+							mensaje.setIDMensaje(ultimoID.getInt(7) + 1);
+						} else {
+							mensaje.setIDMensaje(0);
+						}
+
 						Statement st = conn.createStatement();
 						st.executeUpdate("INSERT INTO `mensaje`"
 								+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`, `ID`) "
-								+ "VALUES " + "('" + mensaje.getDestinatario() + "','"
-								+ mensaje.getAsunto() + "','" + mensaje.getRemitente()
-								+ "','" + mensaje.getMensaje() + "','"
-								+ mensaje.getEstado() + "','" + mensaje.getTipoMensaje()
-								+ "','" + mensaje.getIDMensaje() + "')");
+								+ "VALUES " + "('" + mensaje.getDestinatario()
+								+ "','" + mensaje.getAsunto() + "','"
+								+ mensaje.getRemitente() + "','"
+								+ mensaje.getMensaje() + "','"
+								+ mensaje.getEstado() + "','"
+								+ mensaje.getTipoMensaje() + "','"
+								+ mensaje.getIDMensaje() + "')");
 						st.executeUpdate("INSERT INTO `mensaje`"
 								+ "(`Destinario`, `Asunto`, `Remitente`, `Mensaje`, `Estado`, `TipoMensaje`, `ID`) "
-								+ "VALUES " + "('" + mensaje.getDestinatario() + "','"
-								+ mensaje.getAsunto() + "','" + mensaje.getRemitente()
-								+ "','" + mensaje.getMensaje() + "','"
+								+ "VALUES " + "('" + mensaje.getDestinatario()
+								+ "','" + mensaje.getAsunto() + "','"
+								+ mensaje.getRemitente() + "','"
+								+ mensaje.getMensaje() + "','"
 								+ mensaje.getEstado() + "', 'Recibido', '"
 								+ mensaje.getIDMensaje() + "')");
 					}
-					else {
-						PrintWriter out = response.getWriter();  
-						out.println("<script type=\"text/javascript\">");
-						out.println("location='enviarMensaje.jsp';");
-						out.println("alert('Destinatario inexistente');");
-						out.println("</script>");	
-					}
 				}
-				PrintWriter out = response.getWriter();  
+				PrintWriter out = response.getWriter();
 				out.println("<script type=\"text/javascript\">");
 				out.println("location='enviarMensaje.jsp';");
 				out.println("alert('Mensaje enviado.');");
