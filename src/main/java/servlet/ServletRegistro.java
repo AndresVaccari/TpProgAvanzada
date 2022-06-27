@@ -42,6 +42,8 @@ public class ServletRegistro extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		String email_regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+
 		Usuario usuario = new Usuario();
 		usuario.setUsuario(request.getParameter("user"));
 		usuario.setClave(request.getParameter("pass"));
@@ -68,6 +70,12 @@ public class ServletRegistro extends HttpServlet {
 				out.println("<script type=\"text/javascript\">");
 				out.println("location='registro.jsp';");
 				out.println("alert('Las claves no coinciden');");
+				out.println("</script>");
+			} else if (!usuario.getEmail().matches(email_regex)) {
+				PrintWriter out = response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("location='registro.jsp';");
+				out.println("alert('Ingrese un mail valido');");
 				out.println("</script>");
 			} else {
 				try {
