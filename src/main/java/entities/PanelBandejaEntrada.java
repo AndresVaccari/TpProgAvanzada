@@ -43,8 +43,6 @@ public class PanelBandejaEntrada {
 				mensajes.next();
 			}
 
-			// System.out.println(listaMensajes.length);
-
 			request.setAttribute("mensajes", listaMensajes);
 			request.getRequestDispatcher("bandejaEntrada.jsp").forward(request,
 					response);
