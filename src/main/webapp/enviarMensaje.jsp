@@ -42,8 +42,8 @@
 						<label class="form-label">Asunto</label>
 						<input type="text" class="form-control" name="asunto" />
 					</div>
-					<div class="mx-auto mb-4" style="width: 500px;">
-						<textarea rows="4" cols="40" name="mensaje" placeholder="Mensaje"></textarea>
+					<div class="mb-4">
+						<textarea class="rounded-3" rows="4" cols="40" name="mensaje" placeholder="Mensaje" style="width: 100%;"></textarea>
 					</div>
 					
 					<button type="submit" class="btn btn-primary btn-block mb-2" name="botonEnviar">Enviar Mensaje</button>

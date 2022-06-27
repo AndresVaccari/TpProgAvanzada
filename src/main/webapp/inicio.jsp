@@ -11,7 +11,8 @@
 </head>
 <body>
 	<%
-	String mensaje = (String) request.getAttribute("mensaje");
+	String nombre = (String) request.getAttribute("nombre");
+	String apellido = (String) request.getAttribute("apellido");
 	String tipoUsuario = (String) request.getAttribute("tipoUsuario");
 	String usuario = (String) request.getAttribute("usuario");
 	%>
@@ -22,6 +23,7 @@
 					<button type="submit" name="bs"
 						class="btn btn-link navbar-brand">
 							<img alt="Logo" width="120px" src="img/mail.svg">
+							<span>Bienvenido <%=nombre%> <%=apellido%>!</span>
 						</button>
 				</form>
 				<form class="d-flex" action="ServletNavbar" method="get">

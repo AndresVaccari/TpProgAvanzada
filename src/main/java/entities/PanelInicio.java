@@ -19,7 +19,8 @@ public class PanelInicio {
 			String apellido = session.getAttribute("apellido").toString();
 
 			request.setAttribute("tipoUsuario", tipoUsuario);
-			request.setAttribute("mensaje", nombre + " " + apellido);
+			request.setAttribute("nombre", nombre);
+			request.setAttribute("apellido", apellido);
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher("inicio.jsp").forward(request,
 					response);
