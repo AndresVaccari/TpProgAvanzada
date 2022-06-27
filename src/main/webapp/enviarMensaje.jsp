@@ -36,7 +36,7 @@
 				<div class="d-flex flex-column p-5 bg-light border rounded-4">
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<label class="form-label">Para</label>
-						<input type="text" class="form-control" name="destinatario" placeholder="destinatario1, destinatario2, etc"/>
+						<input type="text" class="form-control" name="destinatario" placeholder="destinatario1, destinatario2, etc" />
 					</div>
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<label class="form-label">Asunto</label>
