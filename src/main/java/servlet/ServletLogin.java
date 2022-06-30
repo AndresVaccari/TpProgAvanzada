@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -82,19 +81,20 @@ public class ServletLogin extends HttpServlet {
 					PanelInicio panel = new PanelInicio();
 					panel.actualizarPanel(request, response);
 				} else {
-					PrintWriter out = response.getWriter();
-					out.println("<script type=\"text/javascript\">");
-					out.println("location='login.jsp';");
-					out.println(
-							"alert('Usuario inactivo o pendiente de aprobacion');");
-					out.println("</script>");
+					String mensaje = "Usuario inactivo o pendiente de aprobacion";
+					String color = "bg-danger";
+					request.setAttribute("color", color);
+					request.setAttribute("mensaje", mensaje);
+					request.getRequestDispatcher("login.jsp").forward(request,
+							response);
 				}
 			} else {
-				PrintWriter out = response.getWriter();
-				out.println("<script type=\"text/javascript\">");
-				out.println("location='login.jsp';");
-				out.println("alert('Usuario o contrasenia incorrecta');");
-				out.println("</script>");
+				String mensaje = "Usuario o contraseña incorrecta";
+				String color = "bg-danger";
+				request.setAttribute("color", color);
+				request.setAttribute("mensaje", mensaje);
+				request.getRequestDispatcher("login.jsp").forward(request,
+						response);
 			}
 
 		} catch (Exception e) {

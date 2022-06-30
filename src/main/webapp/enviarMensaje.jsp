@@ -9,6 +9,10 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 </head>
+<%
+	String mensaje = (String)request.getAttribute("mensaje"); 
+	String color = (String)request.getAttribute("color"); 
+%>
 <body>
 	<header>
 		<nav class="navbar bg-light">
@@ -34,6 +38,13 @@
 		<form action="ServletEnviarMensaje" method="get">
 			<div class="d-flex justify-content-center align-items-center m-5">
 				<div class="d-flex flex-column p-5 bg-light border rounded-4">
+					<%
+						if (mensaje != null) {
+							%>
+								<p class="text-center text-white p-2 rounded-3 <%=color%>"><%=mensaje %></p>
+							<%
+						}
+					%>
 					<div class="mx-auto mb-4" style="width: 500px;">
 						<label class="form-label">Para</label>
 						<input type="text" class="form-control" name="destinatario" placeholder="destinatario1, destinatario2, etc" />

@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -71,12 +70,13 @@ public class ServletEnviarMensaje extends HttpServlet {
 					if (!validacionUsuario.next()
 							|| validacionUsuario.getInt(7) != 1) {
 						existeDestinatario = false;
-						PrintWriter out = response.getWriter();
-						out.println("<script type=\"text/javascript\">");
-						out.println("location='enviarMensaje.jsp';");
-						out.println(
-								"alert('Usuario inexistente o inactivo en lista');");
-						out.println("</script>");
+						String mensaje = "Usuario inactivo o inexistente en la lista";
+						String color = "bg-danger";
+						request.setAttribute("color", color);
+						request.setAttribute("mensaje", mensaje);
+						request.getRequestDispatcher("enviarMensaje.jsp")
+								.forward(request, response);
+						break;
 					}
 				}
 				if (existeDestinatario) {
@@ -118,11 +118,12 @@ public class ServletEnviarMensaje extends HttpServlet {
 								+ mensaje.getIDMensaje() + "')");
 					}
 				}
-				PrintWriter out = response.getWriter();
-				out.println("<script type=\"text/javascript\">");
-				out.println("location='enviarMensaje.jsp';");
-				out.println("alert('Mensaje enviado.');");
-				out.println("</script>");
+				String mensaje = "Mensaje enviado";
+				String color = "bg-success";
+				request.setAttribute("color", color);
+				request.setAttribute("mensaje", mensaje);
+				request.getRequestDispatcher("enviarMensaje.jsp")
+						.forward(request, response);
 			}
 
 		} catch (Exception e) {
