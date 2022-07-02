@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import entities.Conexion;
 import entities.EstadoUsuario;
 import entities.PanelInicio;
 import jakarta.servlet.ServletException;
@@ -50,8 +51,7 @@ public class ServletLogin extends HttpServlet {
 			String user = request.getParameter("user");
 			String pass = request.getParameter("pass");
 
-			java.sql.Connection conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/tpfinal", "root", "");
+			java.sql.Connection conn = Conexion.getConexion();
 
 			Statement st = conn.createStatement();
 
@@ -98,7 +98,7 @@ public class ServletLogin extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 
 	}

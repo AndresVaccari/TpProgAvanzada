@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+import entities.Conexion;
 import entities.PanelAdmin;
 
 /**
@@ -39,7 +40,7 @@ public class ServletAdminPanel extends HttpServlet {
 		try {
 			PanelAdmin panel = new PanelAdmin();
 			
-			java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tpfinal", "root", "");
+			java.sql.Connection conn = Conexion.getConexion();
 			
 			String botonDesactivar = request.getParameter("botonDesactivar");
 			if (botonDesactivar != null) {
@@ -61,7 +62,7 @@ public class ServletAdminPanel extends HttpServlet {
 			}
 				
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 

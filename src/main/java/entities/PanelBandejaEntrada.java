@@ -47,6 +47,7 @@ public class PanelBandejaEntrada {
 			request.getRequestDispatcher("bandejaEntrada.jsp").forward(request,
 					response);
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 }

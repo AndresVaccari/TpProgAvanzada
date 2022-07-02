@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+import entities.Conexion;
 import entities.PanelBandejaEntrada;
 import entities.PanelMensaje;
 import jakarta.servlet.ServletException;
@@ -41,8 +42,7 @@ public class ServletBandejaEntrada extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			java.sql.Connection conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/tpfinal", "root", "");
+			java.sql.Connection conn = Conexion.getConexion();
 
 			String botonLeer = request.getParameter("botonLeer");
 			if (botonLeer != null) {
@@ -60,7 +60,7 @@ public class ServletBandejaEntrada extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 

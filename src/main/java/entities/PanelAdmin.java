@@ -82,6 +82,7 @@ public class PanelAdmin {
 			request.getRequestDispatcher("adminpanel.jsp").forward(request,
 					response);
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 }

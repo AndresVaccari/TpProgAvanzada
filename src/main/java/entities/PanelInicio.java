@@ -25,6 +25,7 @@ public class PanelInicio {
 			request.getRequestDispatcher("inicio.jsp").forward(request,
 					response);
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 

@@ -40,6 +40,7 @@ public class PanelMensaje {
 			request.getRequestDispatcher("mensaje.jsp").forward(request,
 					response);
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 }

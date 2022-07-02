@@ -66,7 +66,7 @@ public class ServletInicio extends HttpServlet {
 				panel.actualizarPanel(request, response);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 		}
 	}
 

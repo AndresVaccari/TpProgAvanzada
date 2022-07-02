@@ -1,10 +1,12 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import entities.Conexion;
 import entities.Mensaje;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -42,8 +44,7 @@ public class ServletEnviarMensaje extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 
-			java.sql.Connection conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/tpfinal", "root", "");
+			Connection conn = Conexion.getConexion();
 
 			String botonEnviar = request.getParameter("botonEnviar");
 
@@ -127,7 +128,7 @@ public class ServletEnviarMensaje extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 
