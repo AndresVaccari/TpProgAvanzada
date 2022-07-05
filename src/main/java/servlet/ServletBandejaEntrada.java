@@ -63,7 +63,6 @@ public class ServletBandejaEntrada extends HttpServlet {
 			System.out.println(e);
 		}
 	}
-	//test
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
